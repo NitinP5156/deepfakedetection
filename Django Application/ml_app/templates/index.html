@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - DeepFake Detection{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3">DeepFake Detection</h1>
+            <p class="lead text-muted">Upload a video to analyze and detect potential deepfake content</p>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-4">
+                <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label for="{{ form.upload_video_file.id_for_label }}" class="form-label">
+                            <i class="fas fa-video me-2"></i>Select Video File
+                        </label>
+                        <div class="input-group">
+                            <input type="file" 
+                                   name="{{ form.upload_video_file.name }}" 
+                                   id="{{ form.upload_video_file.id_for_label }}"
+                                   class="form-control {% if form.upload_video_file.errors %}is-invalid{% endif %}"
+                                   accept="video/*"
+                                   required>
+                            {% if form.upload_video_file.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.upload_video_file.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <small class="text-muted">Supported formats: MP4, AVI, MOV, WMV (Max size: 100MB)</small>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="{{ form.sequence_length.id_for_label }}" class="form-label">
+                            <i class="fas fa-film me-2"></i>Sequence Length
+                        </label>
+                        <div class="input-group">
+                            <input type="number" 
+                                   name="{{ form.sequence_length.name }}" 
+                                   id="{{ form.sequence_length.id_for_label }}"
+                                   class="form-control {% if form.sequence_length.errors %}is-invalid{% endif %}"
+                                   value="{{ form.sequence_length.value|default:'60' }}"
+                                   min="1"
+                                   required>
+                            {% if form.sequence_length.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.sequence_length.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <small class="text-muted">Number of frames to analyze (recommended: 60)</small>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-search me-2"></i>Analyze Video
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-shield-alt fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Advanced Detection</h5>
+                            <p class="card-text text-muted">Utilizing state-of-the-art deep learning models for accurate detection</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-bolt fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Fast Analysis</h5>
+                            <p class="card-text text-muted">Quick processing with real-time results and detailed analysis</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">High Accuracy</h5>
+                            <p class="card-text text-muted">Reliable results with confidence scores and visual analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Form validation
+    (function () {
+        'use strict'
+        var forms = document.querySelectorAll('.needs-validation')
+        Array.prototype.slice.call(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
+{% endblock %}

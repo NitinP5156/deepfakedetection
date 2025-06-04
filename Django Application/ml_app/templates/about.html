@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}About - DeepFake Detection{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3">About DeepFake Detection</h1>
+            <p class="lead text-muted">Understanding our technology and mission</p>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h3 class="card-title mb-4">
+                    <i class="fas fa-info-circle me-2 text-primary"></i>What is DeepFake Detection?
+                </h3>
+                <p class="card-text">
+                    DeepFake Detection is an advanced AI-powered system designed to identify and analyze potential deepfake content in videos. 
+                    Using state-of-the-art deep learning models, our system can detect subtle manipulations and provide accurate assessments 
+                    of video authenticity.
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <i class="fas fa-brain me-2 text-primary"></i>How It Works
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Frame-by-frame analysis of video content
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Advanced face detection and tracking
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Deep learning model for authenticity assessment
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Confidence scoring and detailed analysis
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <i class="fas fa-shield-alt me-2 text-primary"></i>Key Features
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Real-time video analysis
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                High accuracy detection
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                Detailed visual feedback
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                User-friendly interface
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title mb-4">
+                    <i class="fas fa-exclamation-triangle me-2 text-primary"></i>Important Note
+                </h3>
+                <p class="card-text">
+                    While our system provides advanced deepfake detection capabilities, it's important to note that no detection system is 100% foolproof. 
+                    We recommend using our tool as part of a comprehensive approach to content verification, alongside other verification methods and 
+                    critical thinking.
+                </p>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'ml_app:home' %}" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
